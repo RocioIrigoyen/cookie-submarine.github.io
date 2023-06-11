@@ -37,13 +37,13 @@ const torta12 = new Producto ("Choco & Nut", "torta", 3600, 1, " ✨Choco&Nut✨
 const torta13 = new Producto ("Red Velvet", "torta", 900, 1, "✨Red Velvet✨ 🎂El Red Velvet Cake (literalmente 'torta de terciopelo rojo') consta de un bizcochuelo de cacao de color rojo oscuro", "imagen", 13)
 const torta14 = new Producto ("Apple Crumble", "torta", 4500, 1, `Como lo prometido es deuda... ✨Apple Crumble ✨` , "imagen", 14)
 const torta15 = new Producto ("Torta temática", "torta", 2500, 1,"Pedí tu diseño con mínimo 10 días de anticipación", "imagen", 15)
-const cookies01 = new Producto ("Cookies decoradas", "galletitas", 500, 6, "galletitas de vainilla decoradas con glacé, sprinkles y pasta Ballina", "imagen", 16)
-const cookies02 = new Producto ("Cookies con rocklets", "galletitas", 1000, 6, "galletitas de chocolate con rocklets", "imagen", 17)
-const cookies03 = new Producto ("Cookies temáticas", "galletitas", 1600, 6, "🍪 Cookies de limón y vanilla + cookies de chocolate y naranja, decoradas con pasta Ballina y papel comestible", "imagen", 18)
-const cupcake01 = new Producto ("Cupcakes temáticos", "cupcakes", 4500, 6, "🧁 Muffins de chocolate o vainilla, decorados con dulce de leche repostero y papel comestible", "imagen", 19)
-const brownies01 = new Producto ("Blondies", "brownies", 600, 6, "✨Blondies✨ Brownies de chocolate blanco con pasas de arándano rojo.", "imagen", 20)
-const brownies02 = new Producto ("Brownies", "brownies", 400, 6, "Brownies de chocolate negro", "imagen", 21)
-const chipa = new Producto ("Chipas", "chipas", 1000, 6, "400 g de chipas lleeeeenas de queso", "imagen",22)
+const cookies01 = new Producto ("Cookies decoradas", "galletitas", 500, 1, "galletitas de vainilla decoradas con glacé, sprinkles y pasta Ballina", "imagen", 16)
+const cookies02 = new Producto ("Cookies con rocklets", "galletitas", 1000, 1, "galletitas de chocolate con rocklets", "imagen", 17)
+const cookies03 = new Producto ("Cookies temáticas", "galletitas", 1600, 1, "🍪 Cookies de limón y vanilla + cookies de chocolate y naranja, decoradas con pasta Ballina y papel comestible", "imagen", 18)
+const cupcake01 = new Producto ("Cupcakes temáticos", "cupcakes", 4500, 1, "🧁 Muffins de chocolate o vainilla, decorados con dulce de leche repostero y papel comestible", "imagen", 19)
+const brownies01 = new Producto ("Blondies", "brownies", 600, 1, "✨Blondies✨ Brownies de chocolate blanco con pasas de arándano rojo.", "imagen", 20)
+const brownies02 = new Producto ("Brownies", "brownies", 400, 1, "Brownies de chocolate negro", "imagen", 21)
+const chipa = new Producto ("Chipas", "chipas", 1000, 1, "400 g de chipas lleeeeenas de queso", "imagen",22)
 
 
 /*Arrays*/
@@ -54,7 +54,6 @@ const catalogo = [torta01,torta02,torta03,torta04,torta05,torta06,torta07,torta0
 
 //Carrito 
 let carrito = []
-
 
 //Buscar productos por categoría
 
@@ -69,9 +68,16 @@ const btnFiltrarTorta = document.querySelector("#dropdown-torta")
 
 
 
+
+
 /* DOM */
 
 //Mostrar productos en el catálogo
+
+
+
+
+
 
 const marketContainer = document.querySelector (".market__container")
 
@@ -102,29 +108,15 @@ catalogo.forEach((producto, indice) => {
 const btnCarrito = document.querySelectorAll("#card_prod")
 
 
-/* btnCarrito.forEach(e => {
-    e.addEventListener("click", (e) => {
-        agregarCarritoProd(e.target.id)
-    })    
-}) 
- */
-
 //Mostrar productos en el carrito
 
 const contenedorCarrito = document.querySelector("#contenedor_carrito")
-contenedorCarrito.classList.add("carrito_template")
-
-
-
+const totalPagar = document.querySelector("#total_pagar")
 
 //Funciones
 
-function agregarCarritoProd(indice) {
-    let nuevoProd= catalogo[indice]
-    /* let buscarProductoPorId = catalogo.find ((producto) => producto.id === parseInt(id)) */
-    carrito.push(nuevoProd)
-    monto_a_pagar += nuevoProd.precio
-    console.log(carrito)
+function mostrarCarrito() {
+    contenedorCarrito.classList.add("carrito_template")
     contenedorCarrito.innerHTML=""
     carrito.forEach ((producto, indice) => {
         let carritoCard = document.createElement("div")
@@ -135,23 +127,115 @@ function agregarCarritoProd(indice) {
             <div class="card-body">
               <h5 class="card-title"> ${producto.nombre}</h5>
               <h6 class="card-title"> $${producto.precio}</h6>
+              <h6 class="card-title"> Cantidad: ${producto.cantidad}</h6>
               <button id= "${producto.id}" class="btn btn-danger" onClick="eliminarProducto(${indice})">Eliminar</button>
             </div>
            `
         carritoCard.innerHTML = contenido_card
         contenedorCarrito.appendChild(carritoCard)
     })
-    }
+}
 
+function mostrarMontoAPagar() {
+    totalPagar.classList.add("carrito_template")
+    totalPagar.innerHTML=""
+    let mensajePagar = document.createElement("div")
+    mensajePagar.innerHTML=
+    `<h3>Total a pagar: ${monto_a_pagar}</h3>
+    <button class="btn btn-primary" onClick="iniciarCompra()">Iniciar compra</button>
+    `
+    totalPagar.appendChild(mensajePagar)
+}
 
-
-function eliminarProducto(indice) {
-    let sacarProd = carrito[indice]
-    carrito.splice(indice, 1)
-    monto_a_pagar -= sacarProd.precio
+function iniciarCompra() {
+    contenedorCarrito.innerHTML=""
+    totalPagar.innerHTML=""
+    let compraIniciada = document.createElement("div")
+    compraIniciada.innerHTML=
+    `<h3>¡Gracias por su compra! Se le cobrará un total de $${monto_a_pagar}</h3>`
+    totalPagar.appendChild(compraIniciada)
 }
 
 
+function agregarCarritoProd(indice) {
+    Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Producto agregado al carrito',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    let nuevoProd= catalogo[indice]
+    let verifyIndex = carrito.findIndex((producto) => {
+        return producto.id === catalogo[indice].id
+    })
+    if (verifyIndex === -1) {
+        carrito.push(nuevoProd)
+        monto_a_pagar += nuevoProd.precio
+        console.log(carrito)
+        guardarStorage(carrito)
+        actualizarStorage()
+        mostrarCarrito()
+        mostrarMontoAPagar()
+    } else {
+        carrito[verifyIndex].cantidad += 1
+        monto_a_pagar += carrito[verifyIndex].precio
+        guardarStorage(carrito)
+        actualizarStorage()
+        mostrarCarrito()
+        mostrarMontoAPagar()
+    }
+    }
+    
+
+function eliminarProducto(indice) {
+    let sacarProd = carrito[indice]
+    monto_a_pagar -= sacarProd.precio * sacarProd.cantidad
+    carrito.splice(indice, 1)
+    guardarStorage(carrito)
+    actualizarStorage()
+    mostrarCarrito()
+    mostrarMontoAPagar()
+}
 
 
+function guardarStorage(cart) {
+    localStorage.setItem("carrito", JSON.stringify(cart))
+}
+
+
+function actualizarStorage() {
+    const storageCarrito = JSON.parse(localStorage.getItem("carrito"))
+    storageCarrito.push("Base de datos")
+    localStorage.setItem("carrito", storageCarrito)
+}
+
+
+/* Formulario de contacto */
+
+const btnEnviar = document.querySelector("#btn-enviar-formulario")
+const contenedorForm = document.querySelector(".datos-contacto")
+
+function enviarFormulario (e) {
+    e.preventDefault() 
+    contenedorForm.innerHTML= ""
+    let mensajeExito = document.createElement("div")
+    mensajeExito.innerHTML=
+    `
+    <h2>Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
+    `
+    contenedorForm.appendChild(mensajeExito)
+
+}
+
+btnEnviar.addEventListener("click", enviarFormulario)
+
+
+/* btnCarrito.forEach(e => {
+    e.addEventListener("click", (e) => {
+        agregarCarritoProd(e.target.id)
+    })    
+}) 
+ */
 

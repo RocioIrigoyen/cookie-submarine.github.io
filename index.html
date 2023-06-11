@@ -22,7 +22,7 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" href="./pages/contacto.html">Contacto</a>
+                <a class="nav-link" href="#datos-contacto">Contacto</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Sobre nosotros</a>
@@ -69,14 +69,60 @@
 
     </div>
 
+    <!-- Carrito -->
+
+    <hr>
+
     <div class="carrito_template" >
       <h2>Productos en el carrito</h2>
       <div id="contenedor_carrito">
 
       </div>
+      <div id="total_pagar">
+      
+      </div>
     </div>
     <a name="contenedor_carrito"></a>
 
+    <!-- Formulario de contacto -->
+
+    <hr>
+
+    <h2>Hacenos tu pedido</h2>
+    <div class="datos-contacto">
+        <fieldset>
+            <legend>Datos de contacto</legend>
+            
+            <form action="" method="get">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="" id="nombre" placeholder="Ingrese su nombre" required>
+    
+                
+                <label for="email">Email</label>
+                <input type="email" name="" id="email" placeholder="Ingrese su email" required>
+                
+
+                <label for="msj">Mensaje</label>
+                <textarea name="" id="msj" cols="30" rows="10"></textarea>
+
+
+                <label for="msj">Si tiene una foto de referencia, adjuntela:</label>
+                <input type="file" name="" id="">
+          
+    
+                <div class="btn-formulario">
+                  <input class= "btn btn-primary" type="reset" value="Borrar todo">
+                  <input id= "btn-enviar-formulario" class= "btn btn-primary" type="submit" value="Enviar">
+                </div>
+
+    
+            </form>
+        </fieldset>
+        <a name="datos-contacto"></a>
+
+       
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>
