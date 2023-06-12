@@ -63,21 +63,11 @@ const buscar_cookie = catalogo.filter((prod)=> prod.tipo == "galletitas")
 const buscar_cupcake = catalogo.filter((prod)=> prod.tipo == "cupcakes")
 const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
 
-const btnFiltrarTorta = document.querySelector("#dropdown-torta")
-
-
-
-
 
 
 /* DOM */
 
 //Mostrar productos en el catálogo
-
-
-
-
-
 
 const marketContainer = document.querySelector (".market__container")
 
@@ -103,13 +93,9 @@ catalogo.forEach((producto, indice) => {
  
 /* Eventos */
 
-//Agregar al carrito
+/* Carrito */
 
 const btnCarrito = document.querySelectorAll("#card_prod")
-
-
-//Mostrar productos en el carrito
-
 const contenedorCarrito = document.querySelector("#contenedor_carrito")
 const totalPagar = document.querySelector("#total_pagar")
 
@@ -139,12 +125,14 @@ function mostrarCarrito() {
 function mostrarMontoAPagar() {
     totalPagar.classList.add("carrito_template")
     totalPagar.innerHTML=""
-    let mensajePagar = document.createElement("div")
-    mensajePagar.innerHTML=
-    `<h3>Total a pagar: ${monto_a_pagar}</h3>
-    <button class="btn btn-primary" onClick="iniciarCompra()">Iniciar compra</button>
-    `
-    totalPagar.appendChild(mensajePagar)
+    if (monto_a_pagar != 0) {
+        let mensajePagar = document.createElement("div")
+        mensajePagar.innerHTML=
+        `<h3>Total a pagar: ${monto_a_pagar}</h3>
+        <button class="btn btn-primary" onClick="iniciarCompra()">Iniciar compra</button>
+        `
+        totalPagar.appendChild(mensajePagar)
+    }
 }
 
 function iniciarCompra() {
@@ -187,7 +175,7 @@ function agregarCarritoProd(indice) {
         mostrarMontoAPagar()
     }
     }
-    
+
 
 function eliminarProducto(indice) {
     let sacarProd = carrito[indice]
@@ -202,13 +190,15 @@ function eliminarProducto(indice) {
 
 function guardarStorage(cart) {
     localStorage.setItem("carrito", JSON.stringify(cart))
+    localStorage.setItem("deuda", JSON.stringify(monto_a_pagar))
 }
 
 
 function actualizarStorage() {
     const storageCarrito = JSON.parse(localStorage.getItem("carrito"))
-    storageCarrito.push("Base de datos")
-    localStorage.setItem("carrito", storageCarrito)
+    const storageDeuda = JSON.parse(localStorage.getItem("deuda"))
+    localStorage.setItem("carrito", JSON.stringify(storageCarrito))
+    localStorage.setItem("deuda", JSON.stringify(storageDeuda))
 }
 
 
@@ -216,6 +206,10 @@ function actualizarStorage() {
 
 const btnEnviar = document.querySelector("#btn-enviar-formulario")
 const contenedorForm = document.querySelector(".datos-contacto")
+
+let inputNombre = document.querySelector("#nombre")
+let inputMail = document.querySelector("#email")
+
 
 function enviarFormulario (e) {
     e.preventDefault() 
@@ -232,10 +226,41 @@ function enviarFormulario (e) {
 btnEnviar.addEventListener("click", enviarFormulario)
 
 
-/* btnCarrito.forEach(e => {
-    e.addEventListener("click", (e) => {
-        agregarCarritoProd(e.target.id)
-    })    
+inputNombre.addEventListener("blur", (e) => {
+    if (e.target.value === "") {
+        Swal.fire({
+            position: 'top',
+            icon: 'error',
+            title: 'Completá el campo "Nombre"',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
 }) 
- */
+
+inputMail.addEventListener("blur", (e) => {
+    if (e.target.value === "") {
+        Swal.fire({
+            position: 'top',
+            icon: 'error',
+            title: 'Completá el campo "Email"',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+}) 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("carrito")) {
+        carrito = JSON.parse(localStorage.getItem("carrito"))
+        monto_a_pagar = JSON.parse(localStorage.getItem("deuda"))
+        mostrarCarrito()
+        mostrarMontoAPagar() 
+    }
+})
+
+
+
 
