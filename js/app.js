@@ -50,18 +50,215 @@ const chipa = new Producto ("Chipas", "chipas", 1000, 1, "400 g de chipas lleeee
 
 //Catálogo de productos
 
-const catalogo = [torta01,torta02,torta03,torta04,torta05,torta06,torta07,torta08,torta09,torta10,torta11,torta12,torta13,torta14,torta15,cookies01,cookies02,cookies03,cupcake01,brownies01,brownies02,chipa]
+let catalogo = []
 
 //Carrito 
 let carrito = []
 
-//Buscar productos por categoría
+//Filtro de búsqueda - buscar productos por categoría
+
+/* const btnFiltro = document.querySelector (".dropdown-item") */
+
+/* btnFiltro.addEventListener("click", (e) => {
+    if (e.value == "torta") {
+        const buscar_torta = catalogo.filter((prod)=> prod.tipo == "torta")
+        marketContainer.innerHTML=""
+        buscar_torta.forEach((producto, indice) => {
+            let marketCard = document.createElement("article")
+            marketCard.innerHTML =
+                `
+            <div id= "card_prod" class="card" style="width: 18rem;">
+                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+                <div class="card-body">
+                  <h5 class="card-title"> ${producto.nombre}</h5>
+                  <h6 class="card-title"> $${producto.precio}</h6>
+                  <p class="card-text">${producto.descripcion}</p>
+                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+                </div>
+            </div>
+               `
+                   
+            marketContainer.appendChild(marketCard) 
+        })
+    } else if (e.value == "galletitas") {
+        const buscar_cookie = catalogo.filter((prod)=> prod.tipo == "galletitas")
+        marketContainer.innerHTML=""
+        buscar_cookie.forEach((producto, indice) => {
+            let marketCard = document.createElement("article")
+            marketCard.innerHTML =
+                `
+            <div id= "card_prod" class="card" style="width: 18rem;">
+                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+                <div class="card-body">
+                  <h5 class="card-title"> ${producto.nombre}</h5>
+                  <h6 class="card-title"> $${producto.precio}</h6>
+                  <p class="card-text">${producto.descripcion}</p>
+                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+                </div>
+            </div>
+               `
+                   
+            marketContainer.appendChild(marketCard) 
+        })
+
+    } else if (e.value == "brownies") {
+        const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
+        marketContainer.innerHTML=""
+        buscar_brownie.forEach((producto, indice) => {
+            let marketCard = document.createElement("article")
+            marketCard.innerHTML =
+                `
+            <div id= "card_prod" class="card" style="width: 18rem;">
+                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+                <div class="card-body">
+                  <h5 class="card-title"> ${producto.nombre}</h5>
+                  <h6 class="card-title"> $${producto.precio}</h6>
+                  <p class="card-text">${producto.descripcion}</p>
+                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+                </div>
+            </div>
+               `
+                   
+            marketContainer.appendChild(marketCard) 
+        })
+
+    } else if (e.value == "cupcakes") {
+        const buscar_cupcake = catalogo.filter((prod)=> prod.tipo == "cupcakes")
+        marketContainer.innerHTML=""
+        buscar_cupcake.forEach((producto, indice) => {
+            let marketCard = document.createElement("article")
+            marketCard.innerHTML =
+                `
+            <div id= "card_prod" class="card" style="width: 18rem;">
+                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+                <div class="card-body">
+                  <h5 class="card-title"> ${producto.nombre}</h5>
+                  <h6 class="card-title"> $${producto.precio}</h6>
+                  <p class="card-text">${producto.descripcion}</p>
+                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+                </div>
+            </div>
+               `
+                   
+            marketContainer.appendChild(marketCard) 
+        })
+    } else {
+       
+        catalogo.forEach((producto, indice) => {
+            let marketCard = document.createElement("article")
+            marketCard.innerHTML =
+                `
+            <div id= "card_prod" class="card" style="width: 18rem;">
+                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+                <div class="card-body">
+                  <h5 class="card-title"> ${producto.nombre}</h5>
+                  <h6 class="card-title"> $${producto.precio}</h6>
+                  <p class="card-text">${producto.descripcion}</p>
+                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+                </div>
+            </div>
+               `
+                   
+            marketContainer.appendChild(marketCard)
+        })
+
+    }
+    }) */
+
+const btnTorta = document.querySelector ("#dropdown-torta")
+const btnCookie = document.querySelector ("#dropdown-galle")
+const btnBrownie = document.querySelector ("#dropdown-brownie")
+const btnCupcake = document.querySelector ("#dropdown-cupcake") 
 
 
-const buscar_torta = catalogo.filter((prod)=> prod.tipo == "torta")
-const buscar_cookie = catalogo.filter((prod)=> prod.tipo == "galletitas")
-const buscar_cupcake = catalogo.filter((prod)=> prod.tipo == "cupcakes")
-const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
+ btnTorta.addEventListener("click", (e) => {
+    const buscar_torta = catalogo.filter((prod)=> prod.tipo == "torta")
+    marketContainer.innerHTML=""
+    buscar_torta.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
+        </div>
+           `
+               
+        marketContainer.appendChild(marketCard) 
+    })
+}) 
+
+btnCookie.addEventListener("click", (e) => {
+    const buscar_cookie = catalogo.filter((prod)=> prod.tipo == "galletitas")
+    marketContainer.innerHTML=""
+    buscar_cookie.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
+        </div>
+           `
+               
+        marketContainer.appendChild(marketCard) 
+    })
+}) 
+
+ btnBrownie.addEventListener("click", (e) => {
+    const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
+    marketContainer.innerHTML=""
+    buscar_brownie.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
+        </div>
+           `
+               
+        marketContainer.appendChild(marketCard) 
+    })
+})
+ 
+
+btnCupcake.addEventListener("click", (e) => {
+    const buscar_cupcake = catalogo.filter((prod)=> prod.tipo == "cupcakes")
+    marketContainer.innerHTML=""
+    buscar_cupcake.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
+        </div>
+           `
+               
+        marketContainer.appendChild(marketCard) 
+    })
+})
 
 
 
@@ -71,25 +268,33 @@ const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
 
 const marketContainer = document.querySelector (".market__container")
 
+fetch("./data.json")
+  .then((resultado) => resultado.json())
+  .then((data) => {
+    cargarProductos(data)
+  })
 
-catalogo.forEach((producto, indice) => {
-    let marketCard = document.createElement("article")
-    marketCard.innerHTML =
-        `
-    <div id= "card_prod" class="card" style="width: 18rem;">
-        <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-        <div class="card-body">
-          <h5 class="card-title"> ${producto.nombre}</h5>
-          <h6 class="card-title"> $${producto.precio}</h6>
-          <p class="card-text">${producto.descripcion}</p>
-          <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
+  const cargarProductos = (data) => {
+    catalogo = data
+    catalogo.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
         </div>
-    </div>
-       `
-           
-    marketContainer.appendChild(marketCard)
+           `
+               
+        marketContainer.appendChild(marketCard)
+    })
+  }
 
-})
  
 /* Eventos */
 
@@ -145,7 +350,7 @@ function iniciarCompra() {
 }
 
 
-function agregarCarritoProd(indice) {
+function agregarCarritoProd(id) {
     Swal.fire({
         position: 'top',
         icon: 'success',
@@ -154,9 +359,9 @@ function agregarCarritoProd(indice) {
         timer: 1500
       })
 
-    let nuevoProd= catalogo[indice]
+    let nuevoProd= catalogo.find((producto) => producto.id === id )
     let verifyIndex = carrito.findIndex((producto) => {
-        return producto.id === catalogo[indice].id
+        return producto.id === nuevoProd.id
     })
     if (verifyIndex === -1) {
         carrito.push(nuevoProd)
@@ -217,7 +422,7 @@ function enviarFormulario (e) {
     let mensajeExito = document.createElement("div")
     mensajeExito.innerHTML=
     `
-    <h2>Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
+    <h2>¡Gracias, ${inputNombre.value}! Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
     `
     contenedorForm.appendChild(mensajeExito)
 
@@ -260,6 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarMontoAPagar() 
     }
 })
+
 
 
 

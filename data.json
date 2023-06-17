@@ -1,0 +1,254 @@
+[
+    {
+        "nombre": "Marquise de chocolate", 
+        "tipo": "torta", 
+        "precio": 2500, 
+        "cantidad": 1, 
+        "descripcion": "La clásica Marquise tiene una base de chocolate águila semiamargo y dulce de leche repostero", 
+        "imagen":"imagen", 
+        "id": 1,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Carrot Cake", 
+        "tipo": "torta", 
+        "precio": 2650, 
+        "cantidad": 1, 
+        "descripcion": "tradicional bizcochuelo de zanahoria junto a unas crujientes nueces y pasas rubias combinan a la perfección con buttercream y relleno de chocolate blanco", 
+        "imagen":"imagen", 
+        "id": 2,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Bananarama", 
+        "tipo": "torta", 
+        "precio": 3800, 
+        "cantidad": 1, 
+        "descripcion": "La clásica banofee rellena con dulce de leche vacalin pero con una vuelta de tuerca!/t Podés reemplazar la masa de cacao amargo por una de vainilla", 
+        "imagen":"imagen", 
+        "id": 3,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Strawberry fields forever", 
+        "tipo": "torta", 
+        "precio": 1500, 
+        "cantidad": 1, 
+        "descripcion": "Let me take you down 'cause I'm going to... 🍓 Strawberry fields forever 🍓 La clásica tarta de frutilla y pastelera 🍰", 
+        "imagen":"imagen", 
+        "id": 4,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cheseecake", 
+        "tipo": "torta", 
+        "precio": 2000, 
+        "cantidad": 1, 
+        "descripcion": "La clásica tarta de queso con una exquisita mermelada casera de frutillas 🍓 Podés pedirla en sus variantes: ✨ Arándanos ✨ Mix de frutos rojos", 
+        "imagen":"imagen", 
+        "id": 5,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Poires et amandes", 
+        "tipo": "torta", 
+        "precio": 3500, 
+        "cantidad": 1, 
+        "descripcion": "🍐Tarta de peras y almendras🍐 Masa quebrada rellena de crema de almendras y peras en compota de Chardonnay 🍾", 
+        "imagen":"imagen", 
+        "id": 6,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cookies & Cream", 
+        "tipo": "torta", 
+        "precio": 5600, 
+        "cantidad": 1, 
+        "descripcion": "✨Cookies&cream✨ Uno de los más pedidos! Combinamos oreos con chocolate blanco de chocolate Águila. Podés optar por pedirlo con crema de limón 🍋 o dulce de leche 🍯", 
+        "imagen":"imagen", 
+        "id": 7,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Chococheese", 
+        "tipo": "torta", 
+        "precio": 2550, 
+        "cantidad": 1, 
+        "descripcion": "🍫Chococheese🍫 Otro de los grandes favoritos! Con una base de chocolinas, crema de chocotorta y ganache de chocolate semiamargo.", 
+        "imagen":"imagen", 
+        "id": 8,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Dublin", 
+        "tipo": "torta", 
+        "precio": 5000, 
+        "cantidad": 1, 
+        "descripcion": "🍀Dublin🍀 Cheesecake de crema irlandesa y chocolate 🤤", 
+        "imagen":"imagen", 
+        "id": 9,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Tentación Suprema", 
+        "tipo": "torta", 
+        "precio": 1500, 
+        "cantidad": 1, 
+        "descripcion": "✨ Tentación Suprema✨ Miren lo que es esta bomba 😍🤤 Bizcochuelo de chocolate, fruttillas y crema, dulce de leche repostero, mousse de chocolate", 
+        "imagen":"imagen", 
+        "id": 10,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Choco & Nut", 
+        "tipo": "torta", 
+        "precio": 3600, 
+        "cantidad": 1, 
+        "descripcion": "✨Choco&Nut✨ 🍰Cheesecake de crema Kinder con cobertura de chocolate con leche 🍫 Decorado con Nutella 🌰 y chocolate Kinder 🤤", 
+        "imagen":"imagen", 
+        "id": 11,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Red Velvet", 
+        "tipo": "torta", 
+        "precio": 900, 
+        "cantidad": 1, 
+        "descripcion": "✨Red Velvet✨ 🎂El Red Velvet Cake (literalmente 'torta de terciopelo rojo') consta de un bizcochuelo de cacao de color rojo oscuro", 
+        "imagen":"imagen", 
+        "id": 12,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Apple Crumble", 
+        "tipo": "torta", 
+        "precio": 4500, 
+        "cantidad": 1, 
+        "descripcion": "Como lo prometido es deuda... ✨Apple Crumble ✨", 
+        "imagen":"imagen", 
+        "id": 13,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Torta temática", 
+        "tipo": "torta", 
+        "precio": 2500, 
+        "cantidad": 1, 
+        "descripcion": "Pedí tu diseño con mínimo 10 días de anticipación", 
+        "imagen":"imagen", 
+        "id": 14,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cookies decoradas", 
+        "tipo": "galletitas", 
+        "precio": 500, 
+        "cantidad": 1, 
+        "descripcion": "Galletitas de vainilla decoradas con glacé, sprinkles y pasta Ballina", 
+        "imagen":"imagen", 
+        "id": 15,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cookies con Rocklets", 
+        "tipo": "galletitas", 
+        "precio": 1000, 
+        "cantidad": 1, 
+        "descripcion": "Galletitas de chocolate con rocklets", 
+        "imagen":"imagen", 
+        "id": 16,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cookies temáticas", 
+        "tipo": "galletitas", 
+        "precio": 1600, 
+        "cantidad": 1, 
+        "descripcion": "🍪 Cookies de limón y vanilla + cookies de chocolate y naranja, decoradas con pasta Ballina y papel comestible", 
+        "imagen":"imagen", 
+        "id": 17,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Cupcakes temáticos", 
+        "tipo": "cupcakes", 
+        "precio": 600, 
+        "cantidad": 1, 
+        "descripcion": "🧁 Muffins de chocolate o vainilla, decorados con dulce de leche repostero y papel comestible", 
+        "imagen":"imagen", 
+        "id": 18,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Blondies", 
+        "tipo": "brownies", 
+        "precio": 600, 
+        "cantidad": 1, 
+        "descripcion": "✨Blondies✨ Brownies de chocolate blanco con pasas de arándano rojo.", 
+        "imagen":"imagen", 
+        "id": 19,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Brownies", 
+        "tipo": "brownies", 
+        "precio": 400, 
+        "cantidad": 1, 
+        "descripcion": "Brownies de chocolate negro", 
+        "imagen":"imagen", 
+        "id": 20,
+        "disponible": true,
+        "vegano": false
+    },
+    
+    {
+        "nombre": "Chipas", 
+        "tipo": "chipas", 
+        "precio": 1000, 
+        "cantidad": 1, 
+        "descripcion": "400 g de chipas lleeeeenas de queso", 
+        "imagen":"imagen", 
+        "id": 21,
+        "disponible": true,
+        "vegano": false
+    }
+
+]
