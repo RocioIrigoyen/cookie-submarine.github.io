@@ -268,7 +268,32 @@ btnCupcake.addEventListener("click", (e) => {
 
 const marketContainer = document.querySelector (".market__container")
 
-fetch("./data.json")
+const traerProductos = async() => {
+    const respuesta = await fetch("./data.json")
+    const data = await respuesta.json()
+    catalogo = data
+    catalogo.forEach((producto, indice) => {
+        let marketCard = document.createElement("article")
+        marketCard.innerHTML =
+            `
+        <div id= "card_prod" class="card" style="width: 18rem;">
+            <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
+            <div class="card-body">
+              <h5 class="card-title"> ${producto.nombre}</h5>
+              <h6 class="card-title"> $${producto.precio}</h6>
+              <p class="card-text">${producto.descripcion}</p>
+              <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${producto.id})">Agregar al carrito</button></a>
+            </div>
+        </div>
+           `
+               
+        marketContainer.appendChild(marketCard)
+    })
+}
+
+traerProductos()
+
+/* fetch("./data.json")
   .then((resultado) => resultado.json())
   .then((data) => {
     cargarProductos(data)
@@ -293,7 +318,7 @@ fetch("./data.json")
                
         marketContainer.appendChild(marketCard)
     })
-  }
+  } */
 
  
 /* Eventos */
@@ -411,6 +436,7 @@ function actualizarStorage() {
 
 const btnEnviar = document.querySelector("#btn-enviar-formulario")
 const contenedorForm = document.querySelector(".datos-contacto")
+const errorFormulario = document.querySelector("#error")
 
 let inputNombre = document.querySelector("#nombre")
 let inputMail = document.querySelector("#email")
@@ -418,13 +444,24 @@ let inputMail = document.querySelector("#email")
 
 function enviarFormulario (e) {
     e.preventDefault() 
-    contenedorForm.innerHTML= ""
-    let mensajeExito = document.createElement("div")
-    mensajeExito.innerHTML=
-    `
-    <h2>¡Gracias, ${inputNombre.value}! Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
-    `
-    contenedorForm.appendChild(mensajeExito)
+    let mensajeError = []
+    if (inputNombre.value === null || inputNombre.value === "") {
+        mensajeError.push("Por favor, ingresa tu nombre")
+    } else if (inputMail.value === null || inputMail.value === "") {
+        mensajeError.push("Por favor, ingresa tu dirección de mail")
+    } else {
+        contenedorForm.innerHTML= ""
+        let mensajeExito = document.createElement("div")
+        mensajeExito.innerHTML=
+        `
+        <h2>¡Gracias, ${inputNombre.value}! Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
+        `
+        contenedorForm.appendChild(mensajeExito)
+
+     }
+
+     errorFormulario.innerHTML= mensajeError
+
 
 }
 
