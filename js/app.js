@@ -345,6 +345,7 @@ function mostrarCarrito() {
               <h6 class="card-title"> $${producto.precio}</h6>
               <h6 class="card-title"> Cantidad: ${producto.cantidad}</h6>
               <button id= "${producto.id}" class="btn btn-danger" onClick="eliminarProducto(${indice})">Eliminar</button>
+              <button id= "${producto.id}" class="btn btn-danger" onClick="vaciarCarrito()">Vaciar carrito</button>
             </div>
            `
         carritoCard.innerHTML = contenido_card
@@ -372,6 +373,7 @@ function iniciarCompra() {
     compraIniciada.innerHTML=
     `<h3>¡Gracias por su compra! Se le cobrará un total de $${monto_a_pagar}</h3>`
     totalPagar.appendChild(compraIniciada)
+    vaciarCarrito()
 }
 
 
@@ -417,6 +419,16 @@ function eliminarProducto(indice) {
     mostrarMontoAPagar()
 }
 
+function vaciarCarrito() {
+    while (carrito.length > 0) {
+        carrito.pop()
+    }
+    monto_a_pagar = 0
+    guardarStorage(carrito)
+    actualizarStorage()
+    mostrarCarrito()
+}
+
 
 function guardarStorage(cart) {
     localStorage.setItem("carrito", JSON.stringify(cart))
@@ -454,7 +466,7 @@ function enviarFormulario (e) {
         let mensajeExito = document.createElement("div")
         mensajeExito.innerHTML=
         `
-        <h2>¡Gracias, ${inputNombre.value}! Tu pedido fue enviado. Nos comunicaremos a la brevedad.</h2>
+        <h2>¡Gracias, ${inputNombre.value}! Tu pedido fue enviado. Nos comunicaremos al mail ${inputMail.value} a la brevedad.</h2>
         `
         contenedorForm.appendChild(mensajeExito)
 
