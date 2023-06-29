@@ -236,7 +236,6 @@ function mostrarCarrito() {
               <h6 class="card-title"> $${producto.precio}</h6>
               <h6 class="card-title"> Cantidad: ${producto.cantidad}</h6>
               <button id= "${producto.id}" class="btn btn-danger" onClick="eliminarProducto(${indice})">Eliminar</button>
-              <button id= "${producto.id}" class="btn btn-danger" onClick="vaciarCarrito()">Vaciar carrito</button>
             </div>
            `
         carritoCard.innerHTML = contenido_card
@@ -251,6 +250,7 @@ function mostrarMontoAPagar() {
         let mensajePagar = document.createElement("div")
         mensajePagar.innerHTML=
         `<h3>Total a pagar: ${monto_a_pagar}</h3>
+        <button class="btn btn-danger" onClick="vaciarCarrito()">Vaciar carrito</button>
         <button class="btn btn-primary" onClick="iniciarCompra()">Iniciar compra</button>
         `
         totalPagar.appendChild(mensajePagar)
