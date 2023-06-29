@@ -57,113 +57,6 @@ let carrito = []
 
 //Filtro de búsqueda - buscar productos por categoría
 
-/* const btnFiltro = document.querySelector (".dropdown-item") */
-
-/* btnFiltro.addEventListener("click", (e) => {
-    if (e.value == "torta") {
-        const buscar_torta = catalogo.filter((prod)=> prod.tipo == "torta")
-        marketContainer.innerHTML=""
-        buscar_torta.forEach((producto, indice) => {
-            let marketCard = document.createElement("article")
-            marketCard.innerHTML =
-                `
-            <div id= "card_prod" class="card" style="width: 18rem;">
-                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-                <div class="card-body">
-                  <h5 class="card-title"> ${producto.nombre}</h5>
-                  <h6 class="card-title"> $${producto.precio}</h6>
-                  <p class="card-text">${producto.descripcion}</p>
-                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
-                </div>
-            </div>
-               `
-                   
-            marketContainer.appendChild(marketCard) 
-        })
-    } else if (e.value == "galletitas") {
-        const buscar_cookie = catalogo.filter((prod)=> prod.tipo == "galletitas")
-        marketContainer.innerHTML=""
-        buscar_cookie.forEach((producto, indice) => {
-            let marketCard = document.createElement("article")
-            marketCard.innerHTML =
-                `
-            <div id= "card_prod" class="card" style="width: 18rem;">
-                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-                <div class="card-body">
-                  <h5 class="card-title"> ${producto.nombre}</h5>
-                  <h6 class="card-title"> $${producto.precio}</h6>
-                  <p class="card-text">${producto.descripcion}</p>
-                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
-                </div>
-            </div>
-               `
-                   
-            marketContainer.appendChild(marketCard) 
-        })
-
-    } else if (e.value == "brownies") {
-        const buscar_brownie = catalogo.filter((prod)=> prod.tipo == "brownies")
-        marketContainer.innerHTML=""
-        buscar_brownie.forEach((producto, indice) => {
-            let marketCard = document.createElement("article")
-            marketCard.innerHTML =
-                `
-            <div id= "card_prod" class="card" style="width: 18rem;">
-                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-                <div class="card-body">
-                  <h5 class="card-title"> ${producto.nombre}</h5>
-                  <h6 class="card-title"> $${producto.precio}</h6>
-                  <p class="card-text">${producto.descripcion}</p>
-                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
-                </div>
-            </div>
-               `
-                   
-            marketContainer.appendChild(marketCard) 
-        })
-
-    } else if (e.value == "cupcakes") {
-        const buscar_cupcake = catalogo.filter((prod)=> prod.tipo == "cupcakes")
-        marketContainer.innerHTML=""
-        buscar_cupcake.forEach((producto, indice) => {
-            let marketCard = document.createElement("article")
-            marketCard.innerHTML =
-                `
-            <div id= "card_prod" class="card" style="width: 18rem;">
-                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-                <div class="card-body">
-                  <h5 class="card-title"> ${producto.nombre}</h5>
-                  <h6 class="card-title"> $${producto.precio}</h6>
-                  <p class="card-text">${producto.descripcion}</p>
-                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
-                </div>
-            </div>
-               `
-                   
-            marketContainer.appendChild(marketCard) 
-        })
-    } else {
-       
-        catalogo.forEach((producto, indice) => {
-            let marketCard = document.createElement("article")
-            marketCard.innerHTML =
-                `
-            <div id= "card_prod" class="card" style="width: 18rem;">
-                <img src="./imgs/torta_prueba.jpg" class="card-img-top" alt="torta">
-                <div class="card-body">
-                  <h5 class="card-title"> ${producto.nombre}</h5>
-                  <h6 class="card-title"> $${producto.precio}</h6>
-                  <p class="card-text">${producto.descripcion}</p>
-                  <a href="#contenedor_carrito"><button id= "${producto.id}" class="btn btn-primary" onClick="agregarCarritoProd(${indice})">Agregar al carrito</button></a>
-                </div>
-            </div>
-               `
-                   
-            marketContainer.appendChild(marketCard)
-        })
-
-    }
-    }) */
 
 const btnTorta = document.querySelector ("#dropdown-torta")
 const btnCookie = document.querySelector ("#dropdown-galle")
@@ -262,8 +155,6 @@ btnCupcake.addEventListener("click", (e) => {
 
 
 
-/* DOM */
-
 //Mostrar productos en el catálogo
 
 const marketContainer = document.querySelector (".market__container")
@@ -321,7 +212,7 @@ traerProductos()
   } */
 
  
-/* Eventos */
+
 
 /* Carrito */
 
@@ -363,16 +254,63 @@ function mostrarMontoAPagar() {
         <button class="btn btn-primary" onClick="iniciarCompra()">Iniciar compra</button>
         `
         totalPagar.appendChild(mensajePagar)
+    } else {
+        let mensajeVaciar = document.createElement("div")
+        mensajeVaciar.innerHTML=
+        `<h3>El carrito está vacío</h3>
+        `
+        totalPagar.appendChild(mensajeVaciar)
     }
+
 }
+
+const pago = document.querySelector(".mensaje_pago")
+let compraIniciada = document.createElement("div")
 
 function iniciarCompra() {
     contenedorCarrito.innerHTML=""
-    totalPagar.innerHTML=""
-    let compraIniciada = document.createElement("div")
     compraIniciada.innerHTML=
-    `<h3>¡Gracias por su compra! Se le cobrará un total de $${monto_a_pagar}</h3>`
-    totalPagar.appendChild(compraIniciada)
+    `<h3>¡Gracias por su compra! Se le cobrará un total de $${monto_a_pagar}</h3>
+    <div class="container p-0">
+    <div class="card px-4">
+        <p class="h8 py-3">Datos de pago</p>
+        <div id="error_tarjeta"></div>
+        <div class="row gx-3">
+            <div class="col-12">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1">Nombre</p>
+                    <input id="nombre_tarjeta" class="form-control mb-3" type="text" placeholder="Ingrese su nombre como figura en la tarjeta">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1">Número de la tarjeta</p>
+                    <input id="numero_tarjeta" class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1">Fecha de vencimiento</p>
+                    <input id="fecha_vencimiento" class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1">CVV</p>
+                    <input id="cvv" class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="btn btn-primary mb-3">
+                    <button class="btn btn-primary" onClick="finalizarCompra()">Pagar $${monto_a_pagar}</button>
+                    <span class="fas fa-arrow-right"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`
+    pago.appendChild(compraIniciada)
     vaciarCarrito()
 }
 
@@ -422,11 +360,16 @@ function eliminarProducto(indice) {
 function vaciarCarrito() {
     while (carrito.length > 0) {
         carrito.pop()
+        monto_a_pagar= 0
     }
-    monto_a_pagar = 0
+
+
+    
+    mostrarCarrito()
     guardarStorage(carrito)
     actualizarStorage()
-    mostrarCarrito()
+    mostrarMontoAPagar()
+    
 }
 
 
@@ -506,6 +449,37 @@ inputMail.addEventListener("blur", (e) => {
 
 
 
+function finalizarCompra() {
+    const errorTarjeta = document.querySelector("#error_tarjeta")
+    let inputNombreTarjeta = document.querySelector("#nombre_tarjeta")
+    let inputNumeroTarjeta = document.querySelector("#numero_tarjeta")
+    let inputFechaVenc = document.querySelector("#fecha_vencimiento")
+    let inputCVV = document.querySelector("#cvv")
+    let mensajeErrorTarjeta = []
+    if (inputNombreTarjeta.value === null || inputNombreTarjeta.value === "") {
+        mensajeErrorTarjeta.push("Por favor, ingresa tu nombre")
+    } else if (inputNumeroTarjeta.value === null || inputNumeroTarjeta.value === "") {
+        mensajeErrorTarjeta.push("Por favor, ingresa el número de una tarjeta de crédito o débito")
+    } else if (inputFechaVenc.value === null || inputFechaVenc.value === "") {
+        mensajeErrorTarjeta.push("Por favor, ingresa la fecha de vencimiento")
+    } else if (inputCVV.value === null || inputCVV.value === "") {
+        mensajeErrorTarjeta.push("Por favor, ingresa los 3 números al dorso de la tarjeta")
+    } else {
+        pago.innerHTML=""
+        Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: '¡Gracias por tu compra! Dentro de 3 días podrás retirarla en Calle falsa 123 ',
+            showConfirmButton: true,
+            timer: false
+          })
+
+    }
+
+    errorTarjeta.innerHTML= mensajeErrorTarjeta
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("carrito")) {
         carrito = JSON.parse(localStorage.getItem("carrito"))
@@ -514,7 +488,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarMontoAPagar() 
     }
 })
-
 
 
 
