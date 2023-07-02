@@ -149,8 +149,8 @@ const totalPagar = document.querySelector("#total_pagar")
 //Funciones
 
 function mostrarCarrito() {
-    contenedorCarrito.classList.add("carrito_template")
-    contenedorCarrito.innerHTML=""
+    contenedorCarrito.classList.add("carrito_template", "text-primary")
+    contenedorCarrito.innerHTML="<h2>Carrito</h2>"
     carrito.forEach ((producto, indice) => {
         let carritoCard = document.createElement("div")
         carritoCard.classList.add("card-carrito")

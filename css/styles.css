@@ -36,7 +36,6 @@ padding-left: 0;
 }
 
 .carrito_template {
-    background-color: deeppink;
     display: flex;
     justify-content: center;
     flex-direction: column;
